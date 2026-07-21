@@ -3,3 +3,5 @@
 
 # Local editor / dev-server config
 .claude/
+
+# Actions workflow not needed: Pages serves index.html straight from the branch
