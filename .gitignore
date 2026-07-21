@@ -1,0 +1,5 @@
+# Client source documents stay out of the public repo
+*.pdf
+
+# Local editor / dev-server config
+.claude/

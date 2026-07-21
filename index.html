@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clarkumen Advisory — AI Advisory for Accounting &amp; Financial Services Firms</title>
+<meta name="description" content="Business-first AI advisory for accounting and financial services firms. No jargon. No tool pushing. Just a clear path to where AI reduces workload and creates real value.">
+<meta property="og:title" content="Clarkumen Advisory — AI Advisory for Accounting &amp; Financial Services Firms">
+<meta property="og:description" content="Business-first. Commercially grounded. No hype. Book a 30-minute call with Graeme Clark.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://clarkumenadvisory.com/">
+<meta name="theme-color" content="#0E0E0E">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230E0E0E'/><path d='M5 22L11 10l4.5 7.5L18.5 12l8 10z' fill='%23fff'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   MONOCHROME SYSTEM
+   No hue anywhere. The brand mark itself is greyscale, so contrast,
+   weight and space do all the work a colour accent would normally do.
+   ============================================================ */
+:root{
+  --dur-fast:   150ms;
+  --dur-base:   250ms;
+  --dur-slow:   400ms;
+  --dur-reveal: 750ms;
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-back:  cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Every value is r == g == b — zero chroma, so nothing reads as tinted. */
+  --ink:     #0E0E0E;
+  --ink-2:   #171717;
+  --ink-3:   #202020;
+  --white:   #FFFFFF;
+  --off:     #F4F4F4;
+  --off-2:   #EBEBEB;
+  --hair-lt: #E0E0E0;
+  --grey:    #575757;
+  --grey-2:  #8A8A8A;
+  --grey-d:  rgba(255,255,255,.60);
+  --grey-d2: rgba(255,255,255,.40);
+  --hair:    rgba(255,255,255,.13);
+
+  --maxw: 1240px;
+  --gut:  clamp(20px, 4.5vw, 64px);
+
+  /* Corner radii — one place to retune. 0 = hard square, 999px = full pill. */
+  --r-btn:  8px;
+  --r-chip: 6px;
+  --r-card: 10px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0; background:var(--ink); color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:15.5px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{ color:inherit; text-decoration:none; }
+h1,h2,h3{ margin:0; font-family:Archivo,Inter,sans-serif; font-weight:700; line-height:1.04; letter-spacing:-0.028em; }
+p{ margin:0; }
+::selection{ background:var(--ink); color:#fff; }
+
+.wrap{ max-width:var(--maxw); margin:0 auto; padding-inline:var(--gut); }
+
+/* ---------- Type ----------
+   Ceilings are deliberately low: on a 1920px screen the hero tops out at
+   ~44px, not ~60px. Adjust the third clamp value to retune the whole page. */
+.t-display{ font-size:clamp(1.8rem, 2.9vw, 2.75rem); line-height:1.06; letter-spacing:-0.03em; }
+.t-h2{      font-size:clamp(1.4rem, 2.1vw, 2rem);    line-height:1.1;  letter-spacing:-0.026em; }
+.t-h3{      font-size:clamp(1rem, 1.15vw, 1.14rem);  letter-spacing:-0.016em; line-height:1.25; }
+.lead{ font-size:clamp(.94rem, 1.02vw, 1.04rem); line-height:1.6; }
+.small{ font-size:.9rem; line-height:1.65; }
+
+.label{
+  display:inline-flex; align-items:center; gap:.65rem;
+  font-family:Archivo,sans-serif; font-size:.7rem; font-weight:600;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--grey-2);
+}
+.label::before{ content:""; width:22px; height:1px; background:currentColor; flex:none; }
+.on-dark .label{ color:var(--grey-d2); }
+
+/* ============================================================
+   REVEALS
+   ============================================================ */
+.js .rv{ opacity:0; transform:translateY(20px); }
+.js .rv.in{
+  opacity:1; transform:none;
+  transition:opacity var(--dur-reveal) var(--ease-out) var(--d,0ms),
+             transform var(--dur-reveal) var(--ease-out) var(--d,0ms);
+}
+.js .rv-pop{ opacity:0; transform:translateY(24px) scale(.975); }
+.js .rv-pop.in{
+  opacity:1; transform:none;
+  transition:opacity 600ms var(--ease-out) var(--d,0ms),
+             transform 600ms var(--ease-back) var(--d,0ms);
+}
+.mask{ display:block; overflow:hidden; padding-bottom:.05em; }
+.mask > span{ display:block; }
+.js .mask > span{ transform:translateY(106%); }
+.js .mask.in > span{ transform:none; transition:transform 900ms var(--ease-out) var(--d,0ms); }
+
+/* ============================================================
+   BUTTONS — black or white. Nothing else.
+   ============================================================ */
+.btn{
+  position:relative; display:inline-flex; align-items:center; gap:.6rem;
+  padding:.68rem 1.15rem; border:1.5px solid transparent; overflow:hidden;
+  border-radius:var(--r-btn);
+  font-family:Archivo,sans-serif; font-size:.82rem; font-weight:600;
+  letter-spacing:-0.005em; white-space:nowrap; cursor:pointer;
+  background:var(--ink); color:#fff;
+  transition:transform var(--dur-fast) var(--ease-out), color var(--dur-base) var(--ease-out);
+}
+.btn > *{ position:relative; z-index:1; }
+.btn::before{
+  content:""; position:absolute; inset:0; z-index:0; background:var(--grey);
+  transform:translateY(101%); transition:transform var(--dur-slow) var(--ease-out);
+}
+@media (hover:hover){ .btn:hover::before{ transform:none; } }
+.btn:active{ transform:scale(.978); }
+.btn:focus-visible{ outline:2px solid var(--grey-2); outline-offset:3px; }
+.btn .arw{ transition:transform var(--dur-base) var(--ease-out); }
+.btn:hover .arw{ transform:translateX(4px); }
+
+.btn--white{ background:var(--white); color:var(--ink); }
+.btn--white::before{ background:var(--off-2); }
+.btn--line{ background:transparent; border-color:var(--hair-lt); color:var(--ink); }
+.btn--line::before{ background:var(--ink); }
+@media (hover:hover){ .btn--line:hover{ color:#fff; } }
+.on-dark .btn--line{ color:#fff; border-color:rgba(255,255,255,.28); }
+.on-dark .btn--line::before{ background:#fff; }
+@media (hover:hover){ .on-dark .btn--line:hover{ color:var(--ink); } }
+
+.tlink{ position:relative; display:inline-flex; align-items:center; gap:.45rem; font-weight:600; font-size:.86rem; padding-bottom:3px; }
+.tlink::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:1.5px; background:currentColor;
+  transform:scaleX(0); transform-origin:right; transition:transform var(--dur-base) var(--ease-out);
+}
+.tlink:hover::after{ transform:scaleX(1); transform-origin:left; }
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.sec{ position:relative; padding:clamp(4.2rem,9vh,7rem) 0; }
+.on-dark{ background:var(--ink); color:#fff; }
+.on-off{  background:var(--off);  color:var(--ink); }
+.on-white{background:var(--white);color:var(--ink); }
+.on-dark .lead,.on-dark .small{ color:var(--grey-d); }
+.on-off .lead,.on-white .lead,.on-off .small,.on-white .small{ color:var(--grey); }
+.hairline{ height:1px; background:var(--hair); border:0; margin:0; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+/* Solid white bar at all times, so the real logo sits on the plate it was
+   drawn for. Scrolling only adds a hairline + lift, not a colour change. */
+.nav{
+  position:fixed; inset:0 0 auto 0; z-index:80;
+  background:var(--white); border-bottom:1px solid transparent;
+  transition:border-color var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow) var(--ease-out);
+}
+.nav__in{ max-width:var(--maxw); margin:0 auto; padding:.45rem var(--gut); display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.nav__brand{ display:flex; align-items:center; }
+/* 36px keeps the "ACCELERATING GROWTH" tagline legible; below ~32px it mushes */
+.nav__logo{ height:36px; width:auto; display:block; }
+.nav__links{ display:flex; gap:1.8rem; }
+.nav__links a{ font-size:.82rem; font-weight:500; color:var(--grey); transition:color var(--dur-fast) var(--ease-out); }
+.nav__links a:hover{ color:var(--ink); }
+.nav .btn{ padding:.52rem .9rem; font-size:.77rem; }
+.nav.stuck{ border-bottom-color:var(--hair-lt); box-shadow:0 6px 20px -14px rgba(0,0,0,.35); }
+@media (max-width:960px){ .nav__links{ display:none; } }
+@media (max-width:520px){ .nav__logo{ height:29px; } }
+
+/* Footer reuses the same asset, flipped to solid white for the dark plate */
+.foot__logo{ height:32px; width:auto; display:block; filter:brightness(0) invert(1); }
+
+/* ============================================================
+   HERO — two columns so it reads as a composition, not a wall of type
+   ============================================================ */
+.hero{
+  position:relative; overflow:hidden; background:var(--ink); color:#fff;
+  min-height:100svh; display:flex; flex-direction:column; justify-content:center;
+  padding:clamp(4.5rem,9vh,5.5rem) 0 0;   /* clears the ~46px nav */
+}
+/* Fine grid, faded out toward the edges — gives the flat black plate some
+   structure without introducing an image or any hue. */
+.hero::after{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(to right,  rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size:76px 76px;
+  -webkit-mask-image:radial-gradient(ellipse 75% 65% at 62% 32%, #000 0%, transparent 78%);
+          mask-image:radial-gradient(ellipse 75% 65% at 62% 32%, #000 0%, transparent 78%);
+}
+/* Neutral depth wash sitting over the grid */
+.hero::before{
+  content:""; position:absolute; z-index:1; pointer-events:none;
+  width:78vw; aspect-ratio:1; right:-20%; top:-30%; border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.075) 0%, rgba(255,255,255,.022) 42%, transparent 70%);
+}
+.hero__in{ position:relative; z-index:2; flex:1; display:flex; align-items:center; }
+.hero__grid{ width:100%; display:grid; gap:clamp(2.5rem,5vw,4.5rem); grid-template-columns:1fr; align-items:center; }
+/* Text column gets the lion's share so the headline lands on two lines
+   instead of orphaning "Finance." onto a third. */
+@media (min-width:900px){ .hero__grid{ grid-template-columns:1.4fr .8fr; } }
+.hero h1{ max-width:24ch; margin-top:1.2rem; text-wrap:balance; }
+/* Two tiers, not one grey block: a bright promise, then the detail. */
+.hero__sub{ margin-top:1.15rem; max-width:46ch; font-size:clamp(1.02rem,1.2vw,1.2rem); font-weight:500; line-height:1.45; letter-spacing:-0.015em; color:#fff; }
+.hero__body{ margin-top:.85rem; max-width:52ch; font-size:.92rem; line-height:1.62; color:var(--grey-d); }
+.hero__cta{ margin-top:1.9rem; display:flex; gap:1.3rem; align-items:center; flex-wrap:wrap; }
+
+/* Credential panel — real content, gives the hero visual weight */
+.hcard{
+  position:relative; border:1px solid var(--hair); border-radius:var(--r-card);
+  background:linear-gradient(180deg, #1C1C1C 0%, #131313 100%);
+  padding:1.7rem 1.6rem 1.8rem;
+  box-shadow:0 24px 60px -30px rgba(0,0,0,.9);
+}
+/* Hairline highlight along the top edge — reads as a lit surface */
+.hcard::before{
+  content:""; position:absolute; inset:0 0 auto 0; height:1px; border-radius:var(--r-card) var(--r-card) 0 0;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.28), transparent);
+}
+.hcard__k{ font-family:Archivo,sans-serif; font-size:.68rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--grey-d2); }
+.hcard__name{ margin-top:.55rem; font-family:Archivo,sans-serif; font-weight:700; font-size:1.2rem; letter-spacing:-0.028em; color:#fff; }
+.hcard__role{ margin-top:.28rem; font-size:.86rem; color:var(--grey-d); }
+.hcard__rule{ height:1px; background:var(--hair); margin:1.1rem 0; }
+.hcard__row{ display:flex; justify-content:space-between; gap:1rem; padding:.35rem 0; font-size:.84rem; color:var(--grey-d); }
+.hcard__row b{ font-weight:500; color:#fff; }
+
+/* Stat strip */
+.stats{ position:relative; z-index:2; border-top:1px solid var(--hair); margin-top:clamp(2.4rem,5vh,3.5rem); }
+.stats__in{ max-width:var(--maxw); margin:0 auto; padding-inline:var(--gut); display:grid; grid-template-columns:repeat(2,1fr); }
+@media (min-width:820px){ .stats__in{ grid-template-columns:repeat(4,1fr); } }
+.stat{ padding:1.4rem 1.3rem 1.6rem 0; border-right:1px solid var(--hair); }
+.stat:last-child{ border-right:0; }
+@media (max-width:819px){ .stat:nth-child(2n){ border-right:0; padding-right:0; } .stat:nth-child(-n+2){ border-bottom:1px solid var(--hair); } }
+.stat .stat__n{ font-family:Archivo,sans-serif; font-weight:700; font-size:clamp(1.4rem,1.8vw,1.65rem); letter-spacing:-0.035em; line-height:1; color:#fff; }
+.stat .stat__n sup{ font-size:.5em; top:-.75em; color:var(--grey-d2); }
+.stat .stat__l{ margin-top:.4rem; font-size:.8rem; line-height:1.5; color:var(--grey-d); max-width:24ch; }
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.split{ display:grid; gap:clamp(2rem,4.5vw,4rem); grid-template-columns:1fr; align-items:start; }
+@media (min-width:940px){ .split{ grid-template-columns:1.05fr .95fr; } }
+.sec__head{ max-width:26ch; }
+.sec__head .t-h2{ margin-top:1.1rem; }
+.body-col p + p{ margin-top:1rem; }
+
+.quote{
+  padding:2rem 1.9rem; background:var(--ink); color:#fff; border-left:3px solid var(--grey);
+  border-radius:var(--r-card);
+  font-family:Archivo,sans-serif; font-weight:700; font-size:clamp(1.05rem,1.4vw,1.28rem);
+  line-height:1.28; letter-spacing:-0.024em;
+}
+.quote span{ display:block; margin-top:1rem; font-family:Inter,sans-serif; font-weight:400; font-size:.92rem; letter-spacing:0; line-height:1.6; color:var(--grey-d); }
+
+.chips{ margin-top:1.7rem; display:flex; flex-wrap:wrap; gap:.5rem; }
+.chip{ padding:.48rem .9rem; border:1px solid var(--hair); border-radius:var(--r-chip); font-size:.84rem; font-weight:500; color:#fff; transition:border-color var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
+@media (hover:hover){ .chip:hover{ border-color:rgba(255,255,255,.45); transform:translateY(-2px); } }
+
+/* ---------- Process ---------- */
+.steps{ margin-top:2.8rem; border-top:1px solid var(--hair); }
+.step{
+  position:relative; display:grid; gap:.45rem 2.2rem; align-items:start;
+  grid-template-columns:1fr; padding:1.8rem 1rem 1.9rem 0;
+  border-bottom:1px solid var(--hair);
+  transition:padding-left var(--dur-slow) var(--ease-out);
+}
+@media (min-width:880px){ .step{ grid-template-columns:4.5rem 17rem 1fr; padding-inline:1rem; } }
+.step .step__n{
+  font-family:Archivo,sans-serif; font-weight:700; font-size:1.15rem; line-height:1.15;
+  letter-spacing:-0.035em; color:var(--grey-d2);
+  transition:color var(--dur-slow) var(--ease-out);
+}
+.step h3{ color:#fff; }
+.step p.small{ color:var(--grey-d); max-width:52ch; }
+.step::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:1.5px; background:#fff;
+  transform:scaleX(0); transform-origin:left; transition:transform var(--dur-slow) var(--ease-out);
+}
+@media (hover:hover){
+  .step:hover{ padding-left:1.3rem; }
+  .step:hover .step__n{ color:#fff; }
+  .step:hover::after{ transform:scaleX(1); }
+}
+
+/* ---------- Focus grid ---------- */
+/* overflow:hidden lets the 1px-gap divider grid keep rounded outer corners */
+.grid3{ margin-top:2.6rem; display:grid; gap:1px; background:var(--hair-lt); border:1px solid var(--hair-lt); border-radius:var(--r-card); overflow:hidden; grid-template-columns:1fr; }
+@media (min-width:680px){ .grid3{ grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1040px){ .grid3{ grid-template-columns:repeat(3,1fr); } }
+.fcard{ position:relative; background:var(--white); padding:1.9rem 1.6rem 2rem; overflow:hidden; transition:color var(--dur-slow) var(--ease-out); }
+.fcard::before{
+  content:""; position:absolute; inset:0; z-index:0; background:var(--ink);
+  transform:translateY(100%); transition:transform var(--dur-slow) var(--ease-out);
+}
+.fcard > *{ position:relative; z-index:1; }
+@media (hover:hover){
+  .fcard:hover{ color:#fff; }
+  .fcard:hover::before{ transform:none; }
+  .fcard:hover .fcard__n{ color:var(--grey-d2); }
+  .fcard:hover p{ color:var(--grey-d); }
+}
+.fcard .fcard__n{ font-family:Archivo,sans-serif; font-weight:600; font-size:.72rem; letter-spacing:.14em; color:var(--grey-2); transition:color var(--dur-slow) var(--ease-out); }
+.fcard h3{ margin-top:.75rem; font-size:1.02rem; letter-spacing:-0.018em; line-height:1.28; }
+.fcard p{ margin-top:.6rem; color:var(--grey); font-size:.875rem; transition:color var(--dur-slow) var(--ease-out); }
+
+/* ---------- Scenarios ---------- */
+.scards{ margin-top:2.6rem; display:grid; gap:1.1rem; grid-template-columns:1fr; }
+@media (min-width:940px){ .scards{ grid-template-columns:repeat(3,1fr); } }
+.scard{
+  display:flex; flex-direction:column; gap:.85rem; padding:1.9rem 1.7rem 2rem;
+  background:var(--white); border:1px solid var(--hair-lt); border-top:2px solid var(--ink);
+  border-radius:var(--r-card);
+  transition:transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+}
+@media (hover:hover){ .scard:hover{ transform:translateY(-4px); box-shadow:0 20px 40px -26px rgba(14,14,16,.4); } }
+.scard .scard__k{ font-family:Archivo,sans-serif; font-weight:600; font-size:.7rem; letter-spacing:.14em; color:var(--grey-2); }
+.scard h3{ font-size:1.06rem; letter-spacing:-0.02em; line-height:1.26; }
+.scard p{ color:var(--grey); font-size:.875rem; }
+.scard .scard__out{ margin-top:auto; padding-top:.9rem; border-top:1px solid var(--hair-lt); font-weight:500; font-size:.855rem; color:var(--ink); }
+
+/* ---------- The call ---------- */
+.checks{ list-style:none; margin:0; padding:0; display:grid; gap:1rem; }
+.checks li{ display:flex; gap:.8rem; align-items:flex-start; font-size:.9rem; color:var(--grey-d); }
+.checks b{ flex:none; width:20px; height:20px; margin-top:.24rem; background:#fff; color:var(--ink); border-radius:4px; display:grid; place-items:center; font-family:Archivo,sans-serif; font-size:.68rem; font-weight:700; }
+.nos{ margin-top:1.7rem; display:flex; flex-wrap:wrap; gap:.5rem; }
+.no{ padding:.45rem .9rem; border:1px solid var(--hair); border-radius:var(--r-chip); font-size:.84rem; font-weight:500; color:#fff; }
+
+/* ---------- Services ---------- */
+.svc{ margin-top:2.6rem; display:grid; gap:1px; background:var(--hair-lt); border:1px solid var(--hair-lt); border-radius:var(--r-card); overflow:hidden; grid-template-columns:1fr; }
+@media (min-width:800px){ .svc{ grid-template-columns:repeat(2,1fr); } }
+.svc__i{ position:relative; background:var(--white); padding:2rem 1.8rem 2.1rem; transition:background-color var(--dur-slow) var(--ease-out); }
+@media (hover:hover){ .svc__i:hover{ background:var(--off); } }
+.svc__i .svc__n{ font-family:Archivo,sans-serif; font-weight:600; font-size:.72rem; letter-spacing:.14em; color:var(--grey-2); }
+.svc__i h3{ margin-top:.7rem; color:var(--ink); font-size:1.1rem; letter-spacing:-0.02em; }
+.svc__i p{ margin-top:.55rem; color:var(--grey); font-size:.88rem; max-width:46ch; }
+
+/* ---------- Final CTA + footer ---------- */
+.final{ padding:clamp(4.5rem,10vh,7.5rem) 0; text-align:center; }
+.final h2{ max-width:20ch; margin-inline:auto; }
+.final .lead{ margin-top:1.5rem; max-width:50ch; margin-inline:auto; }
+.final__cta{ margin-top:2.2rem; display:flex; justify-content:center; gap:1.2rem; flex-wrap:wrap; }
+.final__alt{ margin-top:1.8rem; font-size:.92rem; color:var(--grey-d); }
+.final__alt a{ color:#fff; border-bottom:1.5px solid rgba(255,255,255,.35); font-weight:500; }
+.final__alt a:hover{ border-bottom-color:#fff; }
+
+.foot{ background:var(--ink); color:#fff; padding:2.8rem 0 3.2rem; border-top:1px solid var(--hair); }
+.foot__in{ display:flex; flex-wrap:wrap; gap:1.5rem 2.4rem; justify-content:space-between; align-items:flex-end; }
+.foot__tag{ max-width:44ch; margin-top:.8rem; font-size:.9rem; color:var(--grey-d); }
+.foot__meta{ display:grid; gap:.38rem; font-size:.9rem; color:var(--grey-d); text-align:right; }
+.foot__meta a:hover{ color:#fff; }
+@media (max-width:640px){ .foot__meta{ text-align:left; } }
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important; animation-iteration-count:1 !important;
+    transition-duration:.01ms !important; scroll-behavior:auto !important;
+  }
+  .js .rv,.js .rv-pop{ opacity:1; transform:none; }
+  .js .mask > span{ transform:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="#top" aria-label="Clarkumen Advisory — home">
+      <img class="nav__logo" src="logo.png" alt="Clarkumen Advisory" width="481" height="160">
+    </a>
+    <nav class="nav__links">
+      <a href="#problem">Problem</a>
+      <a href="#about">Who We Are</a>
+      <a href="#process">Process</a>
+      <a href="#focus">Focus</a>
+      <a href="#services">Services</a>
+    </nav>
+    <a class="btn" href="#book"><span>Book a Call</span> <span class="arw" aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===================== 1. HERO ===================== -->
+<section class="hero">
+  <div class="wrap hero__in">
+    <div class="hero__grid">
+      <div>
+        <span class="label rv">AI Advisory for Accounting &amp; Financial Services</span>
+
+        <h1 class="t-display">
+          <span class="mask"><span style="--d:110ms">Don't Get Left Behind</span></span>
+          <span class="mask"><span style="--d:200ms">by the AI Shift in Finance.</span></span>
+        </h1>
+
+        <p class="hero__sub rv" style="--d:380ms">
+          Accounting and financial services firms are moving. We help yours move smarter.
+        </p>
+
+        <p class="hero__body rv" style="--d:440ms">
+          No jargon. No tool pushing. Just a business-first approach that identifies where AI
+          reduces workload, improves capacity, and creates real value inside your firm.
+        </p>
+
+        <div class="hero__cta rv" style="--d:480ms">
+          <a class="btn btn--white" href="#book"><span>Book a 30-Minute Call</span> <span class="arw" aria-hidden="true">→</span></a>
+          <a class="tlink" href="#process">See How It Works <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+
+      <aside class="hcard rv-pop" style="--d:560ms">
+        <p class="hcard__k">Founded By</p>
+        <p class="hcard__name">Graeme Clark</p>
+        <p class="hcard__role">Former CEO · 30+ years in technology across Australia and Asia</p>
+        <div class="hcard__rule"></div>
+        <div class="hcard__row"><span>Senior roles</span> <b>Advent One · Lenovo · IBM</b></div>
+        <div class="hcard__row"><span>Education</span> <b>MBA, Melbourne Business School</b></div>
+        <div class="hcard__row"><span>Governance</span> <b>Graduate, AICD</b></div>
+        <div class="hcard__rule"></div>
+        <p class="small" style="color:var(--grey-d)">Not a technology vendor. A business advisory firm that specialises in AI.</p>
+      </aside>
+    </div>
+  </div>
+
+  <div class="stats rv" style="--d:640ms">
+    <div class="stats__in">
+      <div class="stat">
+        <p class="stat__n"><span class="count" data-to="30">0</span><sup>+</sup></p>
+        <p class="stat__l">Years leading technology businesses</p>
+      </div>
+      <div class="stat">
+        <p class="stat__n"><span class="count" data-to="4">0</span></p>
+        <p class="stat__l">Steps from conversation to roadmap</p>
+      </div>
+      <div class="stat">
+        <p class="stat__n"><span class="count" data-to="12">0</span></p>
+        <p class="stat__l">Month roadmap you can execute</p>
+      </div>
+      <div class="stat">
+        <p class="stat__n"><span class="count" data-to="30">0</span></p>
+        <p class="stat__l">Minute call. No pitch, no pressure</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 2. THE PROBLEM ===================== -->
+<section class="sec on-off" id="problem">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <div class="sec__head rv">
+          <span class="label">Sound Familiar?</span>
+          <h2 class="t-h2">Still on the Agenda. Never on the Calendar.</h2>
+        </div>
+        <div class="body-col rv" style="--d:100ms;margin-top:1.6rem">
+          <p class="lead">That is not a criticism. It is the reality for most firms right now.</p>
+          <p class="small" style="margin-top:1.1rem">AI stays on the agenda. Discussed. Deferred. Discussed again.</p>
+          <p class="small">
+            Meanwhile, firms that moved early are cutting admin, reducing compliance workload,
+            and improving capacity. That gap is not closing on its own.
+          </p>
+          <div style="margin-top:1.9rem">
+            <a class="btn" href="#book"><span>Get Started</span> <span class="arw" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote rv-pop" style="--d:180ms">
+        One clear starting point is all it takes.
+        <span>Most firms do not need a transformation program. They need one focused conversation about where time and capacity are being lost.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3. WHO WE ARE ===================== -->
+<section class="sec on-dark" id="about">
+  <div class="wrap">
+    <div class="split">
+      <div class="sec__head rv">
+        <span class="label">Why We're Different</span>
+        <h2 class="t-h2">Business First. Technology Second.</h2>
+      </div>
+
+      <div class="rv" style="--d:120ms">
+        <p class="lead">
+          We are not a technology vendor. We are a business advisory firm that specialises in AI,
+          specifically for accounting and financial services firms.
+        </p>
+        <p class="small" style="margin-top:1.1rem">
+          We start with your priorities, your people, and your pressures. Then we work out where AI
+          can genuinely help. <strong style="color:#fff">That distinction shapes every conversation we have.</strong>
+        </p>
+        <div class="chips">
+          <span class="chip">Former CEO</span>
+          <span class="chip">Advent One</span>
+          <span class="chip">Lenovo</span>
+          <span class="chip">IBM</span>
+          <span class="chip">MBA — Melbourne Business School</span>
+          <span class="chip">Graduate, AICD</span>
+        </div>
+        <div style="margin-top:1.9rem">
+          <a class="btn btn--line" href="#book"><span>Talk to Us</span> <span class="arw" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 4. HOW IT WORKS ===================== -->
+<section class="sec on-dark" id="process" style="padding-top:0">
+  <div class="wrap">
+    <hr class="hairline" style="margin-bottom:clamp(4.2rem,9vh,7rem)">
+    <div class="sec__head rv" style="max-width:32ch">
+      <span class="label">The Process</span>
+      <h2 class="t-h2">Four Steps. No Surprises.</h2>
+      <p class="lead" style="margin-top:1.1rem;max-width:48ch">Every engagement starts with a business conversation, not a technology pitch.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step rv">
+        <p class="step__n">01</p>
+        <h3 class="t-h3">Start With the Business</h3>
+        <p class="small">Where is time being lost? Where is the firm too dependent on key people? That is the lens we use.</p>
+      </article>
+      <article class="step rv" style="--d:70ms">
+        <p class="step__n">02</p>
+        <h3 class="t-h3">Identify What Actually Matters</h3>
+        <p class="small">We map the highest-impact AI opportunities for your firm. Not everything possible. Only what is practical and relevant.</p>
+      </article>
+      <article class="step rv" style="--d:140ms">
+        <p class="step__n">03</p>
+        <h3 class="t-h3">Build a Roadmap You Can Execute</h3>
+        <p class="small">A clear 6 to 12 month plan. What to do first, what comes next, and how to bring your team along without disruption.</p>
+      </article>
+      <article class="step rv" style="--d:210ms">
+        <p class="step__n">04</p>
+        <h3 class="t-h3">Implement and Stay on Track</h3>
+        <p class="small">For firms that want ongoing support, we stay involved through implementation and quarterly reviews.</p>
+      </article>
+    </div>
+
+    <div class="rv" style="margin-top:2.4rem">
+      <a class="btn btn--white" href="#book"><span>Book a 30-Minute Call</span> <span class="arw" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 5. WHERE WE FOCUS ===================== -->
+<section class="sec on-white" id="focus">
+  <div class="wrap">
+    <div class="sec__head rv" style="max-width:28ch">
+      <span class="label">Where We Focus</span>
+      <h2 class="t-h2">Where AI Moves the Needle.</h2>
+      <p class="lead" style="margin-top:1.1rem;max-width:54ch">These are the areas where firms like yours are seeing the strongest results.</p>
+    </div>
+
+    <div class="grid3">
+      <div class="fcard rv-pop">
+        <p class="fcard__n">01</p>
+        <h3>Compliance and Review Work</h3>
+        <p>Reducing the time senior staff spend on routine reviews so they can focus on higher-value work.</p>
+      </div>
+      <div class="fcard rv-pop" style="--d:70ms">
+        <p class="fcard__n">02</p>
+        <h3>Client Onboarding</h3>
+        <p>Automating repetitive steps so new clients move through the process faster with less back-and-forth.</p>
+      </div>
+      <div class="fcard rv-pop" style="--d:140ms">
+        <p class="fcard__n">03</p>
+        <h3>Reporting &amp; Document Preparation</h3>
+        <p>Cutting the manual effort behind client reports, board packs, and internal documents.</p>
+      </div>
+      <div class="fcard rv-pop" style="--d:210ms">
+        <p class="fcard__n">04</p>
+        <h3>Internal Administration</h3>
+        <p>Smarter workflows that reduce admin load and free your team for work that actually matters.</p>
+      </div>
+      <div class="fcard rv-pop" style="--d:280ms">
+        <p class="fcard__n">05</p>
+        <h3>Knowledge Capture &amp; Continuity</h3>
+        <p>Keeping critical expertise inside the firm, regardless of who comes or goes.</p>
+      </div>
+      <div class="fcard rv-pop" style="--d:350ms">
+        <p class="fcard__n">Not sure which?</p>
+        <h3>That's exactly what the first call is for.</h3>
+        <p>We'll help you identify where the biggest opportunity sits in your firm.</p>
+        <div style="margin-top:1.1rem"><a class="tlink" href="#book">Book a call <span aria-hidden="true">→</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 6. PROOF POINTS ===================== -->
+<section class="sec on-off" id="scenarios">
+  <div class="wrap">
+    <div class="sec__head rv" style="max-width:32ch">
+      <span class="label">A Practical First Step</span>
+      <h2 class="t-h2">It Does Not Need to Be Complicated.</h2>
+      <p class="lead" style="margin-top:1.1rem;max-width:64ch">
+        Every business is different, but the first opportunity is often easier to find than people
+        expect. It usually starts with one recurring bottleneck, one manual process, or one decision
+        point that is consuming more time than it should.
+      </p>
+    </div>
+
+    <div class="scards">
+      <article class="scard rv-pop">
+        <p class="scard__k">Scenario 01</p>
+        <h3>Compliance Review Preparation</h3>
+        <p>
+          A mid-sized accounting firm has senior staff spending hours preparing for compliance reviews.
+          The first step could be to map the current workflow, identify where time is being lost, and
+          design a practical AI-supported process to prepare the information faster and more consistently.
+        </p>
+        <p class="scard__out">The goal is not to replace expertise. It is to give experienced people more time to apply it.</p>
+      </article>
+
+      <article class="scard rv-pop" style="--d:90ms">
+        <p class="scard__k">Scenario 02</p>
+        <h3>Client Onboarding</h3>
+        <p>
+          A financial advisory practice is dealing with too much back-and-forth during client onboarding.
+          The first step could be to identify the repetitive admin tasks, standardise the information flow,
+          and automate the parts of the process that do not require professional judgement.
+        </p>
+        <p class="scard__out">A smoother experience for clients and less manual follow-up for the team.</p>
+      </article>
+
+      <article class="scard rv-pop" style="--d:180ms">
+        <p class="scard__k">Scenario 03</p>
+        <h3>Knowing Where to Start With AI</h3>
+        <p>
+          A tax and business advisory firm knows AI matters but does not have a clear plan. The first step
+          could be a structured discovery session to identify the highest-value opportunities, assess what
+          is practical, and prioritise one or two areas that can be tested without major disruption.
+        </p>
+        <p class="scard__out">The aim is not a large AI strategy document. It is to find a sensible starting point.</p>
+      </article>
+    </div>
+
+    <div class="rv" style="margin-top:2.4rem;max-width:72ch">
+      <p class="lead">
+        The common thread: none of these starts with a major transformation program. They start with a
+        focused conversation about where time, cost, or capacity is being lost — and what could be improved first.
+      </p>
+      <div style="margin-top:1.7rem">
+        <a class="btn" href="#book"><span>Book a Conversation</span> <span class="arw" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 7. WHAT THE CALL LOOKS LIKE ===================== -->
+<section class="sec on-dark" id="call">
+  <div class="wrap">
+    <div class="split">
+      <div class="sec__head rv">
+        <span class="label">Before You Book</span>
+        <h2 class="t-h2">30 Minutes. No Agenda. Just Clarity.</h2>
+        <p class="lead" style="margin-top:1.1rem">You do not need to prepare anything.</p>
+      </div>
+
+      <div class="rv" style="--d:120ms">
+        <ul class="checks">
+          <li><b aria-hidden="true">1</b> We will ask a few questions about where your firm is right now.</li>
+          <li><b aria-hidden="true">2</b> Then we will share at least two specific areas where AI could make a practical difference, based on what we hear.</li>
+          <li><b aria-hidden="true">3</b> If it makes sense to keep talking, we will. If not, you still walk away with something useful.</li>
+        </ul>
+
+        <div class="nos" aria-label="What this call is not">
+          <span class="no">No pitch</span>
+          <span class="no">No proposal</span>
+          <span class="no">No pressure</span>
+        </div>
+
+        <div style="margin-top:2rem;display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap">
+          <a class="btn btn--white" href="#book"><span>Book a Call</span> <span class="arw" aria-hidden="true">→</span></a>
+          <a class="tlink" href="mailto:graeme@clarkumenadvisory.com" style="color:var(--grey-d)">Prefer to reach out first?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 8. SERVICES ===================== -->
+<section class="sec on-white" id="services">
+  <div class="wrap">
+    <div class="sec__head rv" style="max-width:30ch">
+      <span class="label">Four Ways to Work With Us</span>
+      <h2 class="t-h2">Start Where It Makes Sense.</h2>
+    </div>
+
+    <div class="svc">
+      <div class="svc__i rv-pop">
+        <p class="svc__n">01</p>
+        <h3>Introduction to AI</h3>
+        <p>A practical, jargon-free workshop that gives your leadership team the confidence and clarity to move forward.</p>
+      </div>
+      <div class="svc__i rv-pop" style="--d:80ms">
+        <p class="svc__n">02</p>
+        <h3>Discovery and Strategy</h3>
+        <p>A structured process that identifies your highest-impact AI opportunities and delivers a clear 6 to 12 month roadmap.</p>
+      </div>
+      <div class="svc__i rv-pop" style="--d:160ms">
+        <p class="svc__n">03</p>
+        <h3>Implementation</h3>
+        <p>We work alongside your team to implement AI solutions that fit your existing workflows. No technical barriers, no disruption.</p>
+      </div>
+      <div class="svc__i rv-pop" style="--d:240ms">
+        <p class="svc__n">04</p>
+        <h3>Ongoing Advisory</h3>
+        <p>Quarterly reviews to keep your AI roadmap relevant as the business evolves. Senior AI expertise without the full-time cost.</p>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:2.4rem">
+      <a class="btn" href="#book"><span>Get Started</span> <span class="arw" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 9. FINAL CTA ===================== -->
+<section class="final on-dark" id="book">
+  <div class="wrap">
+    <h2 class="t-h2 rv">You Do Not Need a Plan to Start. Just a Problem Worth Solving.</h2>
+    <p class="lead rv" style="--d:90ms">
+      Most firms we work with arrived with a problem, not a plan. That is enough to start.
+      One 30-minute conversation is all it takes to move from uncertain to clear.
+    </p>
+    <div class="final__cta rv" style="--d:170ms">
+      <a class="btn btn--white" href="mailto:graeme@clarkumenadvisory.com?subject=Booking%20a%2030-minute%20call">
+        <span>Book a 30-Minute Call With Graeme</span> <span class="arw" aria-hidden="true">→</span>
+      </a>
+    </div>
+    <p class="final__alt rv" style="--d:240ms">
+      Not ready to book? Email <a href="mailto:graeme@clarkumenadvisory.com">graeme@clarkumenadvisory.com</a>
+      and we will get back to you personally.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__in">
+      <div>
+        <img class="foot__logo" src="logo.png" alt="Clarkumen Advisory" width="481" height="160">
+        <p class="foot__tag">
+          AI Advisory for Accounting and Financial Services Firms.
+          Business-first. Commercially grounded. No hype.
+        </p>
+      </div>
+      <div class="foot__meta">
+        <a href="mailto:graeme@clarkumenadvisory.com">graeme@clarkumenadvisory.com</a>
+        <a href="tel:+61422001104">+61 422 001104</a>
+        <span>clarkumenadvisory.com</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- Reveals ---------- */
+(function(){
+  const items = document.querySelectorAll('.rv, .rv-pop, .mask');
+  if (REDUCE || !('IntersectionObserver' in window)){
+    items.forEach(el => el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((es) => {
+    for (const e of es){
+      if (!e.isIntersecting) continue;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  }, { rootMargin:'0px 0px -10% 0px', threshold:0.1 });
+  items.forEach(el => io.observe(el));
+})();
+
+/* ---------- Stat counters ---------- */
+(function(){
+  const nums = document.querySelectorAll('.count');
+  if (!nums.length) return;
+  if (REDUCE || !('IntersectionObserver' in window)){
+    nums.forEach(n => n.textContent = n.dataset.to);
+    return;
+  }
+  const run = (el) => {
+    const to = +el.dataset.to, dur = 1300, t0 = performance.now();
+    const tick = (t) => {
+      const p = Math.min(1, (t - t0) / dur);
+      el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const io = new IntersectionObserver((es) => {
+    for (const e of es){
+      if (!e.isIntersecting) continue;
+      run(e.target); io.unobserve(e.target);
+    }
+  }, { threshold:0.6 });
+  nums.forEach(n => io.observe(n));
+})();
+
+/* ---------- Nav ---------- */
+(function(){
+  const nav = document.getElementById('nav'), hero = document.querySelector('.hero');
+  if (!nav || !hero) return;
+  new IntersectionObserver(([e]) => nav.classList.toggle('stuck', !e.isIntersecting),
+    { rootMargin:'-80px 0px 0px 0px' }).observe(hero);
+})();
+
+/* ---------- Anchors ---------- */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (ev) => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (!t) return;
+    ev.preventDefault();
+    t.scrollIntoView({ behavior: REDUCE ? 'auto' : 'smooth', block:'start' });
+  });
+});
+
+/* ---------- Enhancement: Lenis smooth scroll + hero depth on exit ---------- */
+if (!REDUCE) {
+  const load = (src) => new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = src; s.async = true; s.onload = res; s.onerror = rej;
+    document.head.appendChild(s);
+  });
+
+  (async () => {
+    try {
+      await load('https://unpkg.com/lenis@1.1.20/dist/lenis.min.js');
+      if (window.Lenis){
+        const lenis = new Lenis({ duration:1.05, smoothWheel:true, touchMultiplier:1.6 });
+        const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
+        requestAnimationFrame(raf);
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+          a.addEventListener('click', (ev) => {
+            const t = document.querySelector(a.getAttribute('href'));
+            if (t){ ev.preventDefault(); lenis.scrollTo(t, { offset:-10 }); }
+          }, true);
+        });
+        window.__lenis = lenis;
+      }
+    } catch(_){}
+
+    try {
+      await load('https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js');
+      await load('https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js');
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      if (window.__lenis) window.__lenis.on('scroll', ScrollTrigger.update);
+
+      gsap.to('.hero__in', {
+        y:-60, opacity:.45, ease:'none',
+        scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:0.4 }
+      });
+
+      ScrollTrigger.refresh();
+    } catch(_){}
+  })();
+}
+</script>
+</body>
+</html>
